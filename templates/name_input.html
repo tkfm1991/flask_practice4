@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>入力チェックを実装する</title>
+    </head>
+    <body>
+        <h2>同じ内容を入力して、送信ボタンを押しましょう。</h2>
+        {% if error %}
+        <p><strong> {{ error }}</strong></p>
+        {% endif %}
+        <form method="POST" action="{{ url_for('validate')}}">
+            <p>
+                名前：<input
+                    type="text"
+                    name="name"
+                    size="40"
+                    value="{{ request.form.name}}"
+                />
+            </p>
+            <p>
+                名前(確認用)：<input
+                    type="text"
+                    name="name2"
+                    size="40"
+                    value="{{ request.form.name2}}"
+                />
+            </p>
+            <button type="submit">送信</button>
+        </form>
+    </body>
+</html>
